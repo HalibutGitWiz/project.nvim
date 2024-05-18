@@ -167,7 +167,12 @@ local function projects(opts)
       local on_project_selected = function()
         find_project_files(prompt_bufnr)
       end
+      local on_project_newtab = function()
+        vim.cmd("tabnew")
+        find_project_files(prompt_bufnr)
+      end
       actions.select_default:replace(on_project_selected)
+      actions.select_tab:replace(on_project_newtab)
       return true
     end,
   }):find()
